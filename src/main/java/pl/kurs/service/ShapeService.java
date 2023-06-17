@@ -4,6 +4,7 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ArrayNode;
+import org.apache.commons.lang.NullArgumentException;
 import pl.kurs.models.Circle;
 import pl.kurs.models.IShape;
 
@@ -18,43 +19,38 @@ public class ShapeService {
 
     public IShape findTheBiggestField(List<IShape> list) {
         return Optional.ofNullable(list)
-                .orElseThrow(() -> new NullPointerException("Lista pusta"))
+                .orElseThrow(() -> new NullPointerException("Przekazana w argumencie lista jest pusta!!!"))
                 .stream()
                 .filter(Objects::nonNull)
                 .max(Comparator.comparing(IShape::getField))
-                .orElseThrow(() -> new NoSuchElementException("Nie ma takiego elementu"));
+                .orElseThrow(() -> new NoSuchElementException("Nie ma takiego elementu!!!"));
     }
 
     public IShape findShapeWithTheLargestCircuit(List<IShape> list, Class tClass) {
         return Optional.ofNullable(list)
-                .orElseThrow(() -> new NullPointerException("Lista pusta"))
+                .orElseThrow(() -> new NullPointerException("Przekazana w argumencie lista jest pusta!!!"))
                 .stream()
                 .filter(Objects::nonNull)
                 .filter(x -> x.getClass().equals(tClass))
                 .max(Comparator.comparing(IShape::getCircuit))
-                .orElseThrow(() -> new NoSuchElementException("Nie ma takiego elementu"));
+                .orElseThrow(() -> new NoSuchElementException("Nie ma takiego elementu!!!"));
     }
 
-    public void exportJsonFile(List<IShape> list, String path) {
+    public void exportJsonFile(List<IShape> list, String path) throws IOException {
+        if(list == null | path==null)
+            throw new NullPointerException("Jeden z argumentow jest niewlasciwy, lub oba!!!");
+
         ArrayNode jsonArray = objectMapper.createArrayNode();
         for (IShape e : list) {
             jsonArray.add(objectMapper.valueToTree(e));
         }
-        try {
-            objectMapper.writeValue(new File(path), jsonArray);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        objectMapper.writeValue(new File(path), jsonArray);
     }
 
-    public List<IShape> importJsonFile(String path) {
+    public List<IShape> importJsonFile(String path) throws IOException {
         List<IShape> list = null;
-        try {
-            list = objectMapper.readValue(new File(path), objectMapper.getTypeFactory()
-                    .constructCollectionType(List.class, IShape.class));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        list = objectMapper.readValue(new File(path), objectMapper.getTypeFactory()
+                .constructCollectionType(List.class, IShape.class));
         return list;
     }
 }

@@ -5,18 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="51d7f193-a820-4ecd-a4b6-d9cbd28d983d" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/pl/kurs/app/Runner.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/pl/kurs/models/Circle.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/pl/kurs/models/IShape.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/pl/kurs/models/Rectangle.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/pl/kurs/models/ShapeFactory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/pl/kurs/models/ShapeFactoryClass.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/pl/kurs/models/Square.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/pl/kurs/service/ObjectMapperHolder.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/pl/kurs/task.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/shapesJsonTest.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/pl/kurs/service/ShapeServiceTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pl/kurs/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pl/kurs/app/Runner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/kurs/app/Runner.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pl/kurs/service/ShapeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/kurs/service/ShapeService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/shapesJson.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/shapesJson.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,6 +23,7 @@
       <list>
         <option value="Interface" />
         <option value="Class" />
+        <option value="JUnit4 Test Class" />
       </list>
     </option>
   </component>
@@ -47,14 +43,23 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4" value="" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../ExchangeRateApp" />
+    <property name="nodejs_package_manager_path" value="npm" />
   </component>
   <component name="RecentsManager">
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="pl.kurs.service" />
+    </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="pl.kurs.service" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="JUnit.ShapeServiceTest">
     <configuration name="Runner" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="pl.kurs.app.Runner" />
       <module name="Test1R" />
@@ -68,21 +73,86 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ShapeServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Test1R" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="pl.kurs.service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="pl.kurs.service" />
+      <option name="MAIN_CLASS_NAME" value="pl.kurs.service.ShapeServiceTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ShapeServiceTest.exportJsonFileMethod" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Test1R" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="pl.kurs.service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="pl.kurs.service" />
+      <option name="MAIN_CLASS_NAME" value="pl.kurs.service.ShapeServiceTest" />
+      <option name="METHOD_NAME" value="exportJsonFileMethod" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ShapeServiceTest.exportJsonFileMethod2" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Test1R" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="pl.kurs.service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="pl.kurs.service" />
+      <option name="MAIN_CLASS_NAME" value="pl.kurs.service.ShapeServiceTest" />
+      <option name="METHOD_NAME" value="exportJsonFileMethod2" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ShapeServiceTest.exportJsonFileMethod3" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Test1R" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="pl.kurs.service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="pl.kurs.service" />
+      <option name="MAIN_CLASS_NAME" value="pl.kurs.service.ShapeServiceTest" />
+      <option name="METHOD_NAME" value="exportJsonFileMethod3" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.ShapeServiceTest" />
+        <item itemvalue="JUnit.ShapeServiceTest.exportJsonFileMethod3" />
+        <item itemvalue="JUnit.ShapeServiceTest.exportJsonFileMethod2" />
+        <item itemvalue="JUnit.ShapeServiceTest.exportJsonFileMethod" />
         <item itemvalue="Application.Runner" />
       </list>
     </recent_temporary>
@@ -96,7 +166,8 @@
       <option name="presentableId" value="Default" />
       <updated>1686679342840</updated>
       <workItem from="1686687445949" duration="5842000" />
-      <workItem from="1686770674340" duration="22756000" />
+      <workItem from="1686770674340" duration="23670000" />
+      <workItem from="1686949911974" duration="11202000" />
     </task>
     <servers />
   </component>

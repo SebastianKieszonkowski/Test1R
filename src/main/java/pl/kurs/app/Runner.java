@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Runner {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
 
         ShapeFactory shapeFactory = new ShapeFactory();
 
@@ -25,6 +25,7 @@ public class Runner {
         shapes.add(shapeFactory.createCircle(4.0));
         shapes.add(shapeFactory.createCircle(2.0));
         shapes.add(c1);
+        shapes.add(null);
         shapes.add(c2);
         shapes.add(shapeFactory.createSquare(1.0));
         shapes.add(shapeFactory.createSquare(3.0));
@@ -34,6 +35,7 @@ public class Runner {
         shapes.add(shapeFactory.createRectangle(10.0, 2.0));
         shapes.add(shapeFactory.createRectangle(12.0, 7.0));
         shapes.add(shapeFactory.createRectangle(1.0, 2.0));
+
         System.out.println(Circle.class);
 
         ShapeService shapeService = new ShapeService();
@@ -49,7 +51,7 @@ public class Runner {
         //System.out.println(shapeFactory.getSquaresRegister());
         System.out.println(shapes);
 
-        shapeService.exportJsonFile(shapes, "src/main/resources/shapesJson.json");
+        shapeService.exportJsonFile(null, "src/main/resources/shapesJson.json");
         List<IShape> list2 =  shapeService.importJsonFile("src/main/resources/shapesJson.json");
         ObjectMapper objectMapper = ObjectMapperHolder.INSTANCE.getObjectMapper();
 

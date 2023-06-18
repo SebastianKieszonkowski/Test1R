@@ -1,19 +1,20 @@
 package pl.kurs.app;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.node.ArrayNode;
-import pl.kurs.models.*;
+import pl.kurs.exception.WrongInputArgumentException;
+import pl.kurs.shapes.*;
+import pl.kurs.shapes.ShapeFactory;
 import pl.kurs.service.ObjectMapperHolder;
 import pl.kurs.service.ShapeService;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Runner {
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, WrongInputArgumentException {
 
+        ObjectMapper objectMapper = ObjectMapperHolder.INSTANCE.getObjectMapper();
         ShapeFactory shapeFactory = new ShapeFactory();
 
         Circle c1 = shapeFactory.createCircle(1.0);
@@ -38,7 +39,7 @@ public class Runner {
 
         System.out.println(Circle.class);
 
-        ShapeService shapeService = new ShapeService();
+        ShapeService shapeService = new ShapeService(objectMapper);
 
         System.out.println(shapeService.findTheBiggestField(shapes));
         System.out.println(shapeService.findShapeWithTheLargestCircuit(shapes, Circle.class));
@@ -51,9 +52,9 @@ public class Runner {
         //System.out.println(shapeFactory.getSquaresRegister());
         System.out.println(shapes);
 
-        shapeService.exportJsonFile(null, "src/main/resources/shapesJson.json");
+        shapeService.exportJsonFile(shapes, "src/main/resources/shapesJson.json");
         List<IShape> list2 =  shapeService.importJsonFile("src/main/resources/shapesJson.json");
-        ObjectMapper objectMapper = ObjectMapperHolder.INSTANCE.getObjectMapper();
+
 
         System.out.println(list2);
     }

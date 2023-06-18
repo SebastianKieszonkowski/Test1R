@@ -1,4 +1,4 @@
-package pl.kurs.models;
+package pl.kurs.shapes;
 
 import java.util.*;
 

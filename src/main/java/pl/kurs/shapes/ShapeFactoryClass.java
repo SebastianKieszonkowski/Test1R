@@ -1,4 +1,8 @@
-package pl.kurs.models;
+package pl.kurs.shapes;
+
+import pl.kurs.shapes.Circle;
+import pl.kurs.shapes.Rectangle;
+import pl.kurs.shapes.Square;
 
 public abstract class ShapeFactoryClass {
     public abstract Circle createCircle(double radius);

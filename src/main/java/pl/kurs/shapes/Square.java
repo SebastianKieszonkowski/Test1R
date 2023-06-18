@@ -1,6 +1,4 @@
-package pl.kurs.models;
-
-import com.fasterxml.jackson.annotation.JsonTypeName;
+package pl.kurs.shapes;
 
 import java.util.Objects;
 

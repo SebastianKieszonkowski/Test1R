@@ -1,12 +1,19 @@
 package pl.kurs.service;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ArrayNode;
 import org.junit.Before;
 import org.junit.Test;
-import pl.kurs.models.Circle;
-import pl.kurs.models.IShape;
-import pl.kurs.models.Rectangle;
-import pl.kurs.models.ShapeFactory;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
+import pl.kurs.exception.WrongInputArgumentException;
+import pl.kurs.shapes.Circle;
+import pl.kurs.shapes.IShape;
+import pl.kurs.shapes.Rectangle;
+import pl.kurs.shapes.ShapeFactory;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,15 +21,24 @@ import java.util.NoSuchElementException;
 
 import static org.junit.Assert.*;
 import org.assertj.core.api.SoftAssertions;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.*;
 
 public class ShapeServiceTest {
 
     List<IShape> shapes = new ArrayList<>();
     ShapeFactory shapeFactory = new ShapeFactory();
-    ShapeService shapeService = new ShapeService();
+    ObjectMapper objectMapper =ObjectMapperHolder.INSTANCE.getObjectMapper();
+    ShapeService shapeService = new ShapeService(objectMapper);
+
+    @Mock
+    private ObjectMapper objectMapperMock;
+    @InjectMocks
+    ShapeService shapeServiceMock;
 
     @Before
     public void init(){
+        MockitoAnnotations.openMocks(this);
         shapes.add(shapeFactory.createCircle(32.0));
         shapes.add(shapeFactory.createCircle(12.0));
         shapes.add(shapeFactory.createSquare(7.0));
@@ -41,7 +57,7 @@ public class ShapeServiceTest {
         //given
 
         //when
-        IShape shapesWithTheBiggestField = shapeService.findTheBiggestField(shapes);
+        IShape shapesWithTheBiggestField = shapeServiceMock.findTheBiggestField(shapes);
         //then
         assertSame(shapes.get(0), shapesWithTheBiggestField);
     }
@@ -51,7 +67,7 @@ public class ShapeServiceTest {
         //given
 
         //when
-        Exception e = assertThrows(NullPointerException.class, () -> shapeService.findTheBiggestField(null));
+        Exception e = assertThrows(NullPointerException.class, () -> shapeServiceMock.findTheBiggestField(null));
 
         //then
         SoftAssertions sa = new SoftAssertions();
@@ -68,7 +84,7 @@ public class ShapeServiceTest {
         List<IShape> shapes2 = new ArrayList<>();
         shapes2.add(null);
         //when
-        Exception e = assertThrows(NoSuchElementException.class, () -> shapeService.findTheBiggestField(shapes2));
+        Exception e = assertThrows(NoSuchElementException.class, () -> shapeServiceMock.findTheBiggestField(shapes2));
 
         //then
         SoftAssertions sa = new SoftAssertions();
@@ -84,7 +100,7 @@ public class ShapeServiceTest {
         //givene
 
         //when
-        IShape shapesWithTheLargestCircuit = shapeService.findShapeWithTheLargestCircuit(shapes, Rectangle.class);
+        IShape shapesWithTheLargestCircuit = shapeServiceMock.findShapeWithTheLargestCircuit(shapes, Rectangle.class);
         //then
         assertSame(shapes.get(4), shapesWithTheLargestCircuit);
     }
@@ -94,7 +110,7 @@ public class ShapeServiceTest {
         //given
 
         //when
-        Exception e = assertThrows(NullPointerException.class, () -> shapeService.findShapeWithTheLargestCircuit(null, Circle.class));
+        Exception e = assertThrows(NullPointerException.class, () -> shapeServiceMock.findShapeWithTheLargestCircuit(null, Circle.class));
 
         //then
         SoftAssertions sa = new SoftAssertions();
@@ -111,7 +127,7 @@ public class ShapeServiceTest {
         List<IShape> shapes2 = new ArrayList<>();
         shapes2.add(null);
         //when
-        Exception e = assertThrows(NoSuchElementException.class, () -> shapeService.findShapeWithTheLargestCircuit(shapes2, Circle.class));
+        Exception e = assertThrows(NoSuchElementException.class, () -> shapeServiceMock.findShapeWithTheLargestCircuit(shapes2, Circle.class));
 
         //then
         SoftAssertions sa = new SoftAssertions();
@@ -127,7 +143,7 @@ public class ShapeServiceTest {
         //given
 
         //when
-        Exception e = assertThrows(NoSuchElementException.class, () -> shapeService.findShapeWithTheLargestCircuit(shapes, Object.class));
+        Exception e = assertThrows(NoSuchElementException.class, () -> shapeServiceMock.findShapeWithTheLargestCircuit(shapes, Object.class));
 
         //then
         SoftAssertions sa = new SoftAssertions();
@@ -137,17 +153,34 @@ public class ShapeServiceTest {
         sa.assertThat(e).hasFieldOrProperty("message");
         sa.assertAll();
     }
-
     @Test
-    public void exportJsonFileMethod() {
+    public void testExportJsonFile_ValidArguments() throws IOException, WrongInputArgumentException {
+        //given
+        String path = "test.json";
+        List<IShape> shapes2 = new ArrayList<>();
+        shapes2.add(mock(Circle.class));
+        shapes2.add(mock(Circle.class));
+        ArrayNode jsonNode = objectMapper.createArrayNode();
+        when(objectMapperMock.createArrayNode()).thenReturn(jsonNode);
+
+        //when
+        shapeServiceMock.exportJsonFile(shapes2, path);
+
+        //then
+        verify(objectMapperMock, times(1)).createArrayNode();
+        verify(objectMapperMock, times(2)).valueToTree(any(IShape.class));
+        verify(objectMapperMock, times(1)).writeValue(any(File.class), any());
+    }
+    @Test
+    public void exportJsonFileMethodShouldThrowWrongInputArgumentExceptionWhenListIsNull() {
         //given
 
         //when
-        Exception e = assertThrows(NullPointerException.class, () -> shapeService.exportJsonFile(null,"src/main/resources/shapesJsonTest.json"));
+        Exception e = assertThrows(WrongInputArgumentException.class, () -> shapeServiceMock.exportJsonFile(null,"src/main/resources/shapesJsonTest.json"));
 
         //then
         SoftAssertions sa = new SoftAssertions();
-        sa.assertThat(e).isExactlyInstanceOf(NullPointerException.class);
+        sa.assertThat(e).isExactlyInstanceOf(WrongInputArgumentException.class);
         sa.assertThat(e).hasMessage("Jeden z argumentow jest niewlasciwy, lub oba!!!");
         sa.assertThat(e).hasNoCause();
         sa.assertThat(e).hasFieldOrProperty("message");
@@ -155,15 +188,15 @@ public class ShapeServiceTest {
     }
 
     @Test
-    public void exportJsonFileMethod2() {
+    public void exportJsonFileMethodShouldThrowWrongInputArgumentExceptionWhenPathIsNull() {
         //given
 
         //when
-        Exception e = assertThrows(NullPointerException.class, () -> shapeService.exportJsonFile(shapes,null));
+        Exception e = assertThrows(WrongInputArgumentException.class, () -> shapeServiceMock.exportJsonFile(shapes,null));
 
         //then
         SoftAssertions sa = new SoftAssertions();
-        sa.assertThat(e).isExactlyInstanceOf(NullPointerException.class);
+        sa.assertThat(e).isExactlyInstanceOf(WrongInputArgumentException.class);
         sa.assertThat(e).hasMessage("Jeden z argumentow jest niewlasciwy, lub oba!!!");
         sa.assertThat(e).hasNoCause();
         sa.assertThat(e).hasFieldOrProperty("message");
@@ -171,7 +204,28 @@ public class ShapeServiceTest {
     }
 
     @Test
-    public void importJsonFile() throws IOException {
+    public void importJsonFileMethodShouldReturnListTheSameShapesList() throws IOException, WrongInputArgumentException {
+        //given
 
+        //when
+        List<IShape> resultListShapes = shapeService.importJsonFile("src/main/resources/shapesJsonTest.json");
+        //then
+        assertEquals(shapes, resultListShapes);
+    }
+
+    @Test
+    public void importJsonFileMethodShouldThrowWrongInputArgumentExceptionWhenPathIsNull()  {
+        //given
+
+        //when
+        Exception e = assertThrows(WrongInputArgumentException.class, () -> shapeServiceMock.importJsonFile(null));
+
+        //then
+        SoftAssertions sa = new SoftAssertions();
+        sa.assertThat(e).isExactlyInstanceOf(WrongInputArgumentException.class);
+        sa.assertThat(e).hasMessage("Argument jest nullem!!!");
+        sa.assertThat(e).hasNoCause();
+        sa.assertThat(e).hasFieldOrProperty("message");
+        sa.assertAll();
     }
 }

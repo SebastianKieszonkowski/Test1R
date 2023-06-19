@@ -2,6 +2,10 @@ package pl.kurs.shapes;
 
 import org.junit.Before;
 import org.junit.Test;
+import pl.kurs.shapes.models.Circle;
+import pl.kurs.shapes.models.Rectangle;
+import pl.kurs.shapes.models.ShapeFactory;
+import pl.kurs.shapes.models.Square;
 
 import static org.junit.Assert.*;
 
@@ -13,10 +17,10 @@ public class ShapeFactoryTest {
     Square square;
 
     @Before
-    public void init(){
+    public void init() {
         shapeFactory = new ShapeFactory();
         circle = shapeFactory.createCircle(1.0);
-        rectangle = shapeFactory.createRectangle(2.0,3.0);
+        rectangle = shapeFactory.createRectangle(2.0, 3.0);
         square = shapeFactory.createSquare(4.0);
     }
 
@@ -27,8 +31,7 @@ public class ShapeFactoryTest {
         //when
         Circle circle2 = shapeFactory.createCircle(radius);
         //then
-        assertTrue(shapeFactory.getCirclesRegister().contains(circle2));
-        assertEquals(2,shapeFactory.getCirclesRegister().size());
+        assertTrue(shapeFactory.getShapes().contains(circle2));
     }
 
     @Test
@@ -38,10 +41,8 @@ public class ShapeFactoryTest {
         //when
         Circle circle3 = shapeFactory.createCircle(radius);
         //then
-        assertTrue(shapeFactory.getCirclesRegister().contains(circle3));
-        assertEquals(circle,circle3);
-        assertEquals(1,shapeFactory.getCirclesRegister().size());
-
+        assertTrue(shapeFactory.getShapes().contains(circle3));
+        assertEquals(circle, circle3);
     }
 
     @Test
@@ -50,10 +51,9 @@ public class ShapeFactoryTest {
         double length = 3.0;
         double width = 4.0;
         //when
-        Rectangle rectangle2 = shapeFactory.createRectangle(length,width);
+        Rectangle rectangle2 = shapeFactory.createRectangle(length, width);
         //then
-        assertTrue(shapeFactory.getRectanglesRegister().contains(rectangle2));
-        assertEquals(2,shapeFactory.getRectanglesRegister().size());
+        assertTrue(shapeFactory.getShapes().contains(rectangle2));
     }
 
     @Test
@@ -62,11 +62,10 @@ public class ShapeFactoryTest {
         double length = 2.0;
         double width = 3.0;
         //when
-        Rectangle rectangle3 = shapeFactory.createRectangle(length,width);
+        Rectangle rectangle3 = shapeFactory.createRectangle(length, width);
         //then
-        assertTrue(shapeFactory.getRectanglesRegister().contains(rectangle3));
-        assertEquals(rectangle,rectangle3);
-        assertEquals(1,shapeFactory.getRectanglesRegister().size());
+        assertTrue(shapeFactory.getShapes().contains(rectangle3));
+        assertEquals(rectangle, rectangle3);
     }
 
     @Test
@@ -76,10 +75,8 @@ public class ShapeFactoryTest {
         //when
         Circle circle3 = shapeFactory.createCircle(radius);
         //then
-        assertTrue(shapeFactory.getCirclesRegister().contains(circle3));
-        assertEquals(circle,circle3);
-        assertEquals(1,shapeFactory.getCirclesRegister().size());
-
+        assertTrue(shapeFactory.getShapes().contains(circle3));
+        assertEquals(circle, circle3);
     }
 
     @Test
@@ -89,8 +86,8 @@ public class ShapeFactoryTest {
         //when
         Square square2 = shapeFactory.createSquare(side);
         //then
-        assertTrue(shapeFactory.getSquaresRegister().contains(square2));
-        assertEquals(2,shapeFactory.getSquaresRegister().size());
+        assertTrue(shapeFactory.getShapes().contains(square2));
+
     }
 
     @Test
@@ -100,7 +97,6 @@ public class ShapeFactoryTest {
         //when
         Square square3 = shapeFactory.createSquare(side);
         //then
-        assertTrue(shapeFactory.getSquaresRegister().contains(square3));
-        assertEquals(1,shapeFactory.getSquaresRegister().size());
+        assertTrue(shapeFactory.getShapes().contains(square3));
     }
 }

@@ -1,11 +1,11 @@
-package pl.kurs.shapes;
+package pl.kurs.shapes.models;
 
 import com.fasterxml.jackson.annotation.JsonTypeName;
 
 import java.util.Objects;
 
 @JsonTypeName("circle")
-public class Circle implements IShape{
+public class Circle implements IShape {
 
     private double radius;
 

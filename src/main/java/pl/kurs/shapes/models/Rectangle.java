@@ -1,11 +1,11 @@
-package pl.kurs.shapes;
+package pl.kurs.shapes.models;
 
 import com.fasterxml.jackson.annotation.JsonTypeName;
 
 import java.util.Objects;
 
 @JsonTypeName("rectangle")
-public class Rectangle implements IShape{
+public class Rectangle implements IShape {
 
     private double length;
     private double width;

@@ -5,12 +5,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="51d7f193-a820-4ecd-a4b6-d9cbd28d983d" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/pl/kurs/exception/WrongInputArgumentException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/pl/kurs/models/ShapeFactoryTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/pl/kurs/app/Runner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/kurs/app/Runner.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pl/kurs/exception/WrongInputArgumentException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/kurs/exception/WrongInputArgumentException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pl/kurs/service/ObjectMapperHolder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/kurs/service/ObjectMapperHolder.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/pl/kurs/service/ShapeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/kurs/service/ShapeService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pl/kurs/shapes/Circle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/kurs/shapes/models/Circle.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pl/kurs/shapes/IShape.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/kurs/shapes/models/IShape.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pl/kurs/shapes/Rectangle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/kurs/shapes/models/Rectangle.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pl/kurs/shapes/ShapeFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/kurs/shapes/models/ShapeFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pl/kurs/shapes/ShapeFactoryClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/kurs/shapes/models/AbstractShapeFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pl/kurs/shapes/Square.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/kurs/shapes/models/Square.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/shapesJsonTest.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/shapesJsonTest.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/pl/kurs/service/ShapeServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/pl/kurs/service/ShapeServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/pl/kurs/shapes/ShapeFactoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/pl/kurs/shapes/ShapeFactoryTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,12 +53,15 @@
     <property name="aspect.path.notification.shown" value="true" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4" value="" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../ExchangeRateApp" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
   </component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="pl.kurs.shapes" />
     </key>
     <key name="CreateTestDialog.RecentsKey">
       <recent name="pl.kurs.models" />
@@ -59,14 +71,37 @@
       <recent name="pl.kurs.service" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.ShapeFactoryTest">
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+  <component name="RunManager" selected="Application.Runner">
+    <configuration name="Runner" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="pl.kurs.app.Runner" />
+      <module name="Test1R" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="pl.kurs.app.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="class" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="All in Test1R" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Test1R" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TEST_OBJECT" value="package" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -75,7 +110,7 @@
       <module name="Test1R" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="pl.kurs.shapes.*" />
+          <option name="PATTERN" value="pl.kurs.shapes.models.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -86,27 +121,11 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ShapeFactoryTest.createCircleMethodShouldCreateNewCircleWhenRadiusIs5" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Test1R" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="pl.kurs.shapes.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="pl.kurs.shapes" />
-      <option name="MAIN_CLASS_NAME" value="pl.kurs.shapes.ShapeFactoryTest" />
-      <option name="METHOD_NAME" value="createCircleMethodShouldCreateNewCircleWhenRadiusIs5" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="ShapeFactoryTest.createCircleMethodShouldNotCreateNewCircleWhenRadiusIs1" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Test1R" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="pl.kurs.shapes.*" />
+          <option name="PATTERN" value="pl.kurs.shapes.models.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -133,29 +152,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ShapeServiceTest.importJsonFileMethodShouldReturnListTheSameShapesList" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Test1R" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="pl.kurs.service.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="pl.kurs.service" />
-      <option name="MAIN_CLASS_NAME" value="pl.kurs.service.ShapeServiceTest" />
-      <option name="METHOD_NAME" value="importJsonFileMethodShouldReturnListTheSameShapesList" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Runner" />
+        <item itemvalue="JUnit.All in Test1R" />
+        <item itemvalue="JUnit.ShapeServiceTest" />
         <item itemvalue="JUnit.ShapeFactoryTest" />
         <item itemvalue="JUnit.ShapeFactoryTest.createCircleMethodShouldNotCreateNewCircleWhenRadiusIs1" />
-        <item itemvalue="JUnit.ShapeFactoryTest.createCircleMethodShouldCreateNewCircleWhenRadiusIs5" />
-        <item itemvalue="JUnit.ShapeServiceTest" />
-        <item itemvalue="JUnit.ShapeServiceTest.importJsonFileMethodShouldReturnListTheSameShapesList" />
       </list>
     </recent_temporary>
   </component>
@@ -169,7 +172,8 @@
       <updated>1686679342840</updated>
       <workItem from="1686687445949" duration="5842000" />
       <workItem from="1686770674340" duration="23670000" />
-      <workItem from="1686949911974" duration="24677000" />
+      <workItem from="1686949911974" duration="27866000" />
+      <workItem from="1687203131420" duration="6966000" />
     </task>
     <servers />
   </component>
@@ -199,16 +203,6 @@
           <url>file://$PROJECT_DIR$/src/test/java/pl/kurs/service/ShapeServiceTest.java</url>
           <line>166</line>
           <option name="timeStamp" value="2" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/pl/kurs/models/ShapeFactoryTest.java</url>
-          <line>39</line>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/pl/kurs/models/ShapeFactoryTest.java</url>
-          <line>17</line>
-          <option name="timeStamp" value="4" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

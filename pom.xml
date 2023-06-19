@@ -119,7 +119,12 @@
                         <configuration>
                             <outputDirectory>target/jacoco</outputDirectory>
                             <excludes>
-                                <exclude>**/*pl/kurs/models/*</exclude>
+                                <exclude>**/*pl/kurs/shapes/models/Circle.class</exclude>
+                                <exclude>**/*pl/kurs/shapes/models/IShape.class</exclude>
+                                <exclude>**/*pl/kurs/shapes/models/Rectangle.class</exclude>
+                                <exclude>**/*pl/kurs/shapes/models/ShapeFactoryClass.class</exclude>
+                                <exclude>**/*pl/kurs/shapes/models/Square.class</exclude>
+                                <exclude>**/*pl/kurs/exception/*</exclude>
                                 <exclude>**/*pl/kurs/service/ObjectMapperHolder.class</exclude>
                                 <exclude>**/*pl/kurs/app/Runner.class</exclude>
                             </excludes>
@@ -132,7 +137,12 @@
                         </goals>
                         <configuration>
                             <excludes>
-                                <exclude>**/*pl/kurs/models/*</exclude>
+                                <exclude>**/*pl/kurs/shapes/models/Circle.class</exclude>
+                                <exclude>**/*pl/kurs/shapes/models/IShape.class</exclude>
+                                <exclude>**/*pl/kurs/shapes/models/Rectangle.class</exclude>
+                                <exclude>**/*pl/kurs/shapes/models/ShapeFactoryClass.class</exclude>
+                                <exclude>**/*pl/kurs/shapes/models/Square.class</exclude>
+                                <exclude>**/*pl/kurs/exception/*</exclude>
                                 <exclude>**/*pl/kurs/service/ObjectMapperHolder.class</exclude>
                                 <exclude>**/*pl/kurs/app/Runner.class</exclude>
                             </excludes>

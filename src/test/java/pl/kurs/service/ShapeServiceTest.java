@@ -8,10 +8,10 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import pl.kurs.exception.WrongInputArgumentException;
-import pl.kurs.shapes.Circle;
-import pl.kurs.shapes.IShape;
-import pl.kurs.shapes.Rectangle;
-import pl.kurs.shapes.ShapeFactory;
+import pl.kurs.shapes.models.Circle;
+import pl.kurs.shapes.models.IShape;
+import pl.kurs.shapes.models.Rectangle;
+import pl.kurs.shapes.models.ShapeFactory;
 
 import java.io.File;
 import java.io.IOException;
@@ -72,7 +72,7 @@ public class ShapeServiceTest {
         //then
         SoftAssertions sa = new SoftAssertions();
         sa.assertThat(e).isExactlyInstanceOf(NullPointerException.class);
-        sa.assertThat(e).hasMessage("Przekazana w argumencie lista jest pusta!!!");
+        sa.assertThat(e).hasMessage("Przekazana w argumencie lista jest nullem!!!");
         sa.assertThat(e).hasNoCause();
         sa.assertThat(e).hasFieldOrProperty("message");
         sa.assertAll();
@@ -115,7 +115,7 @@ public class ShapeServiceTest {
         //then
         SoftAssertions sa = new SoftAssertions();
         sa.assertThat(e).isExactlyInstanceOf(NullPointerException.class);
-        sa.assertThat(e).hasMessage("Przekazana w argumencie lista jest pusta!!!");
+        sa.assertThat(e).hasMessage("Przekazana w argumencie lista jest nullem!!!");
         sa.assertThat(e).hasNoCause();
         sa.assertThat(e).hasFieldOrProperty("message");
         sa.assertAll();
@@ -154,17 +154,17 @@ public class ShapeServiceTest {
         sa.assertAll();
     }
     @Test
-    public void testExportJsonFile_ValidArguments() throws IOException, WrongInputArgumentException {
+    public void exportJsonFileMethodShouldVerifyCreatingJsonFileProcess() throws IOException, WrongInputArgumentException {
         //given
         String path = "test.json";
-        List<IShape> shapes2 = new ArrayList<>();
-        shapes2.add(mock(Circle.class));
-        shapes2.add(mock(Circle.class));
+        List<IShape> shapeExportList = new ArrayList<>();
+        shapeExportList.add(shapeFactory.createCircle(31.0));
+        shapeExportList.add(shapeFactory.createCircle(12.0));
         ArrayNode jsonNode = objectMapper.createArrayNode();
         when(objectMapperMock.createArrayNode()).thenReturn(jsonNode);
 
         //when
-        shapeServiceMock.exportJsonFile(shapes2, path);
+        shapeServiceMock.exportJsonFile(shapeExportList, path);
 
         //then
         verify(objectMapperMock, times(1)).createArrayNode();

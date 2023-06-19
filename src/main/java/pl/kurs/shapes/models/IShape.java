@@ -1,8 +1,11 @@
-package pl.kurs.shapes;
+package pl.kurs.shapes.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import pl.kurs.shapes.models.Circle;
+import pl.kurs.shapes.models.Rectangle;
+import pl.kurs.shapes.models.Square;
 
 @JsonTypeInfo(
         use = JsonTypeInfo.Id.NAME,
@@ -15,6 +18,7 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 public interface IShape {
     @JsonIgnore
     double getField();
+
     @JsonIgnore
     double getCircuit();
 }

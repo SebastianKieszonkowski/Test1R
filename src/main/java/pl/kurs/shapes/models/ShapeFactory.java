@@ -3,10 +3,10 @@ package pl.kurs.shapes.models;
 import java.util.*;
 
 public class ShapeFactory extends AbstractShapeFactory {
-    private List<IShape> shapeRegister;
+    private Map<String, IShape> shapeRegister;
 
     public ShapeFactory() {
-        shapeRegister = new ArrayList<>();
+        shapeRegister = new HashMap<>();
     }
 
     @Override
@@ -25,14 +25,15 @@ public class ShapeFactory extends AbstractShapeFactory {
     }
 
     private IShape saveIfUnique(IShape shape) {
-        if (!shapeRegister.contains(shape)) {
-            shapeRegister.add(shape);
+        String shapeKey = shape.getKey();
+        if (!shapeRegister.containsKey(shapeKey)) {
+            shapeRegister.put(shapeKey, shape);
         }
-        return shapeRegister.get(shapeRegister.indexOf(shape));
+        return shapeRegister.get(shapeKey);
     }
 
     @Override
-    public List<IShape> getShapes() {
+    public Map<String, IShape> getShapes() {
         return shapeRegister;
     }
 }

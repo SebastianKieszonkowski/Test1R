@@ -5,6 +5,7 @@ import pl.kurs.shapes.models.Rectangle;
 import pl.kurs.shapes.models.Square;
 
 import java.util.List;
+import java.util.Map;
 
 public abstract class AbstractShapeFactory {
     public abstract Circle createCircle(double radius);
@@ -13,6 +14,6 @@ public abstract class AbstractShapeFactory {
 
     public abstract Square createSquare(double side);
 
-    public abstract List<IShape> getShapes();
+    public abstract Map<String, IShape> getShapes();
 
 }

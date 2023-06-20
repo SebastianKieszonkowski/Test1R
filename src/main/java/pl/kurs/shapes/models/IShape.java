@@ -21,4 +21,7 @@ public interface IShape {
 
     @JsonIgnore
     double getCircuit();
+
+    @JsonIgnore
+    String getKey();
 }

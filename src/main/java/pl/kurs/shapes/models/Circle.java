@@ -31,6 +31,11 @@ public class Circle implements IShape {
     }
 
     @Override
+    public String getKey() {
+        return getClass().getSimpleName() + radius;
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;

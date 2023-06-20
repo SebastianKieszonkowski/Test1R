@@ -1,7 +1,7 @@
 package pl.kurs.service;
 
+import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.node.ArrayNode;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.InjectMocks;
@@ -21,8 +21,6 @@ import java.util.NoSuchElementException;
 
 import static org.junit.Assert.*;
 import org.assertj.core.api.SoftAssertions;
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.*;
 
 public class ShapeServiceTest {
 
@@ -156,20 +154,15 @@ public class ShapeServiceTest {
     @Test
     public void exportJsonFileMethodShouldVerifyCreatingJsonFileProcess() throws IOException, WrongInputArgumentException {
         //given
-        String path = "test.json";
-        List<IShape> shapeExportList = new ArrayList<>();
-        shapeExportList.add(shapeFactory.createCircle(31.0));
-        shapeExportList.add(shapeFactory.createCircle(12.0));
-        ArrayNode jsonNode = objectMapper.createArrayNode();
-        when(objectMapperMock.createArrayNode()).thenReturn(jsonNode);
-
+        String pathResultFile = "src/main/resources/shapesJsonTestExport.json";
+        String pathVerifyFile = "src/main/resources/shapesJsonTest.json";
         //when
-        shapeServiceMock.exportJsonFile(shapeExportList, path);
+        shapeService.exportJsonFile(shapes, pathResultFile);
+        JsonNode jnResult = objectMapper.readTree(new File(pathResultFile));
+        JsonNode jnVerify = objectMapper.readTree(new File(pathVerifyFile));
 
         //then
-        verify(objectMapperMock, times(1)).createArrayNode();
-        verify(objectMapperMock, times(2)).valueToTree(any(IShape.class));
-        verify(objectMapperMock, times(1)).writeValue(any(File.class), any());
+        assertEquals(jnVerify, jnResult);
     }
     @Test
     public void exportJsonFileMethodShouldThrowWrongInputArgumentExceptionWhenListIsNull() {
@@ -206,9 +199,9 @@ public class ShapeServiceTest {
     @Test
     public void importJsonFileMethodShouldReturnListTheSameShapesList() throws IOException, WrongInputArgumentException {
         //given
-
+        String path = "src/main/resources/shapesJsonTest.json";
         //when
-        List<IShape> resultListShapes = shapeService.importJsonFile("src/main/resources/shapesJsonTest.json");
+        List<IShape> resultListShapes = shapeService.importJsonFile(path);
         //then
         assertEquals(shapes, resultListShapes);
     }

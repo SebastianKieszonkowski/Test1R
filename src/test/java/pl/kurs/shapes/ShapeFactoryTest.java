@@ -31,7 +31,7 @@ public class ShapeFactoryTest {
         //when
         Circle circle2 = shapeFactory.createCircle(radius);
         //then
-        assertTrue(shapeFactory.getShapes().contains(circle2));
+        assertTrue(shapeFactory.getShapes().containsValue(circle2));
     }
 
     @Test
@@ -41,7 +41,7 @@ public class ShapeFactoryTest {
         //when
         Circle circle3 = shapeFactory.createCircle(radius);
         //then
-        assertTrue(shapeFactory.getShapes().contains(circle3));
+        assertTrue(shapeFactory.getShapes().containsValue(circle3));
         assertEquals(circle, circle3);
     }
 
@@ -53,7 +53,7 @@ public class ShapeFactoryTest {
         //when
         Rectangle rectangle2 = shapeFactory.createRectangle(length, width);
         //then
-        assertTrue(shapeFactory.getShapes().contains(rectangle2));
+        assertTrue(shapeFactory.getShapes().containsValue(rectangle2));
     }
 
     @Test
@@ -64,7 +64,7 @@ public class ShapeFactoryTest {
         //when
         Rectangle rectangle3 = shapeFactory.createRectangle(length, width);
         //then
-        assertTrue(shapeFactory.getShapes().contains(rectangle3));
+        assertTrue(shapeFactory.getShapes().containsValue(rectangle3));
         assertEquals(rectangle, rectangle3);
     }
 
@@ -75,7 +75,7 @@ public class ShapeFactoryTest {
         //when
         Circle circle3 = shapeFactory.createCircle(radius);
         //then
-        assertTrue(shapeFactory.getShapes().contains(circle3));
+        assertTrue(shapeFactory.getShapes().containsValue(circle3));
         assertEquals(circle, circle3);
     }
 
@@ -86,7 +86,7 @@ public class ShapeFactoryTest {
         //when
         Square square2 = shapeFactory.createSquare(side);
         //then
-        assertTrue(shapeFactory.getShapes().contains(square2));
+        assertTrue(shapeFactory.getShapes().containsValue(square2));
 
     }
 
@@ -97,6 +97,6 @@ public class ShapeFactoryTest {
         //when
         Square square3 = shapeFactory.createSquare(side);
         //then
-        assertTrue(shapeFactory.getShapes().contains(square3));
+        assertTrue(shapeFactory.getShapes().containsValue(square3));
     }
 }
